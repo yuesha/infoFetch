@@ -2,3 +2,10 @@
 
 # 忽略上传配置文件
 sftp-config.json
+
+# tp下的特殊文件
+.idea
+composer.lock
+*.log
+thinkphp
+runtime
