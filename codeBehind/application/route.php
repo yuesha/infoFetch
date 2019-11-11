@@ -17,5 +17,15 @@ return [
         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
         ':name' => ['index/hello', ['method' => 'post']],
     ],
-
+    // 注册登录路由
+    'login'       => [
+        // 目标地址
+        'admin/login/index',
+        // 路由参数
+        [
+            'method'    =>   'get',
+            'ext'       =>   'html',
+        ],
+    ],
+    // 'blog/:id'   => ['Blog/update',['method' => 'post|put'], ['id' => '\d+']],
 ];
