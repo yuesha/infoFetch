@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>注册</title>
+  </head>
+  <style>
+   dl{
+      text-align:center;
+      border:2px solid #008800;
+      margin-top:100px;
+      margin-bottom:100px;
+      margin-right:700px;
+      margin-left:700px;
+   }
+  </style>
+  <body>
+<div id="regist_form">
+<dl>
+  <form action="/admin/regist/regist" method="post">
+<dt>
+  <h1>注册页面</h1>
+    <p>姓名:<input type="text" name="UserName"></p>
+</dt>
+<dt>
+  <p>性别:男<input type="radio" name="UserSex" value="0">女<input type="radio" name="UserSex" value="1"></p>
+</dt>
+<dt>
+  <p>手机:<input type="text" name="UserTel"></p>
+</dt>
+<dt>
+  <p>邮件:<input type="text" name="UserEmail"></p>
+</dt>
+<dt>
+  <p>地址:<input type="text" name="UserAddress"></p>
+</dt>
+<dt>
+  <p>生日:<input type="text" name="UserBirth"></p>
+</dt>
+<dt>
+  <p>密码:<input type="password" name="UserPasswd"></p>
+</dt>
+<dt>
+  <p>个性签名:<input type="text" name="UserSignature"></p>
+</dt>
+<dt>
+  <p>喜好:<input type="text" name="UserHobby"></p>
+</dt>
+<dt>
+  <p><input type="submit" value="注册"></p>
+</dt>
+  </form>
+</dl>
+</div>
+  </body>
+</html>
