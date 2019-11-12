@@ -4,12 +4,8 @@ namespace app\admin\controller;
 /**
  * 后台首页控制器
  */
-class IndexController extends \think\Controller
+class IndexController extends \app\comm\baseClass\BaseController
 {
-    function __construct()
-    {
-        $this -> prevent_illegal_login();
-    }
     // 后台首页页面渲染
     public function index()
     {
@@ -21,13 +17,5 @@ class IndexController extends \think\Controller
     public function welcome()
     {
         return view();
-    }
-    // 防止非法登录
-    private function prevent_illegal_login()
-    {
-        if (!session('?manage')) {
-            $this -> error("请勿非法登录！",'/login.html');
-            exit;
-        }
     }
 }
