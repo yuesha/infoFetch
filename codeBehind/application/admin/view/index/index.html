@@ -56,15 +56,16 @@
             </ul>
             <ul class="layui-nav right" lay-filter="">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">admin</a>
+                    <a href="javascript:;">{$manage.name}</a>
                     <dl class="layui-nav-child">
                         <!-- 二级菜单 -->
                         <dd>
                             <a onclick="xadmin.open('个人信息','https://www.baidu.com')">个人信息</a></dd>
                         <dd>
-                            <a onclick="xadmin.open('切换帐号','https://www.baidu.com')">切换帐号</a></dd>
+                            <a href="javascript:;" onclick="loginout();">切换帐号</a></dd>
                         <dd>
-                            <a href="./login.html">退出</a></dd>
+                            <a href="javascript:;" onclick="loginout();">退出</a>
+                        </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
@@ -356,6 +357,23 @@
         <style id="theme_style"></style>
         <!-- 右侧主体结束 -->
         <!-- 中部结束 -->
+        <script type="text/javascript">
+            function loginout(){
+                $.post("{:url('login/loginout')}",null,function(res){
+                    if(res.code > 0){
+                        // 操作失败
+                        layer.msg(res.msg,{icon: 2});
+                    }else{
+                        layer.msg(res.msg, {
+                            icon: 1,
+                            time: 2000
+                        }, function(){
+                            // 操作成功后的操作
+                            window.location.href = "/login.html";
+                        });
+                    }
+                },"json");
+            }
+        </script>
     </body>
-
 </html>

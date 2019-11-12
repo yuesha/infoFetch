@@ -27,5 +27,15 @@ return [
             'ext'       =>   'html',
         ],
     ],
+    // 注册登录路由
+    'adminIndex'       => [
+        // 目标地址
+        'admin/index/index',
+        // 路由参数
+        [
+            'method'    =>   'get',
+            'ext'       =>   'html',
+        ],
+    ],
     // 'blog/:id'   => ['Blog/update',['method' => 'post|put'], ['id' => '\d+']],
 ];
