@@ -6,10 +6,13 @@ namespace app\admin\controller;
  */
 class IndexController extends \think\Controller
 {
+    function __construct()
+    {
+        $this -> prevent_illegal_login();
+    }
     // 后台首页页面渲染
     public function index()
     {
-        $this -> prevent_illegal_login();
         $manage = session("manage");
         $assign['manage'] = $manage;
         return view('',$assign);
