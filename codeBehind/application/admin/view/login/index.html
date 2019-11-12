@@ -37,12 +37,25 @@
                 var form = layui.form;
                 //监听提交
                 form.on('submit(login)', function(data){
-                    data = JSON.stringify(data.field)
-                    layer.msg(data,function(){
-                        console.log(data);
-                    });
+                    // 向后端接口发送数据
+                    $.post("{:url('action')}",data.field,function(res){
+                        if(res.code > 0){
+                            // 操作失败
+                            layer.msg(res.msg,{icon: 2});
+                        }else{
+                            layer.msg(res.msg, {
+                                icon: 1,
+                                time: 2000
+                            }, function(){
+                                // 登录成功后跳转到后台首页
+                                window.location.href = "{:url('index/index')}"
+                            });
+                        }
+                    },"json");
                     return false;
                 });
+
+                // 以下是数据验证
                 form.verify({
                     username: function(value, item){
                         if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){

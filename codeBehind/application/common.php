@@ -10,3 +10,20 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+/*
+ * 接口返回数据函数
+*/
+function exit_msg($msg = "调试信息",$code = 1){
+    $data['msg'] = $msg;
+    $data['code'] = $code;
+    exit(json_encode($data));
+}
+
+/*
+* 密码加密
+*/
+function encr($pw)
+{
+    return md5(md5($pw));
+}
