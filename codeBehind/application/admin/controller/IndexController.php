@@ -11,4 +11,8 @@ class IndexController
     {
         return view();
     }
+    public function welcome()
+    {
+        return view();
+    }
 }
