@@ -1,7 +1,7 @@
 <?php
 
 namespace app\admin\controller;
-
+use app\comm\model\manageModel as Manage;
 /**
  * 登陆控制器
  */
