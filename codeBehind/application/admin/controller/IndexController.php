@@ -17,7 +17,10 @@ class IndexController extends \think\Controller
     // 后台欢迎页面渲染
     public function welcome()
     {
-        return view();
+    	$manage = session("manage");
+    	// 需要传递给模型的数据
+    	$data['manage'] = $manage -> toArray();
+        return view('',$data);
     }
     // 防止非法登录
     private function prevent_illegal_login()
