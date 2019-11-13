@@ -33,6 +33,6 @@ class IndexController extends \think\Controller
     // 测试控制器
     public function test()
     {
-    	# code...
+    	# sss
     }
 }
