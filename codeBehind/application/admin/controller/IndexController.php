@@ -31,3 +31,4 @@ class IndexController extends \think\Controller
         }
     }
 }
+# code
