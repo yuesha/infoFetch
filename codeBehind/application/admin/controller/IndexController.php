@@ -30,5 +30,9 @@ class IndexController extends \think\Controller
             exit;
         }
     }
+    // 测试控制器
+    public function test()
+    {
+    	# sss
+    }
 }
-# code
