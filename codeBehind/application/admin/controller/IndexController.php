@@ -16,6 +16,9 @@ class IndexController extends \app\comm\baseClass\BaseController
     // 后台欢迎页面渲染
     public function welcome()
     {
-        return view();
+    	$manage = session("manage");
+    	// 需要传递给模型的数据
+    	$data['manage'] = $manage -> toArray();
+        return view('',$data);
     }
 }
