@@ -10,6 +10,7 @@ class BaseController extends \think\Controller
     // 继承时自动执行
     function __construct()
     {
+        // echo $this->request->url();
         $this -> prevent_illegal_login();
     }
     // 防止非法登录

@@ -79,9 +79,10 @@
         <div class="left-nav">
             <div id="side-nav">
                 <ul id="nav">
+                    <!-- 个人管理菜单 -->
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="个人管理">&#xe6b8;</i>
+                            <i class="iconfont left-nav-li" lay-tips="个人管理">&#xe726;</i>
                             <cite>个人管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i>
                         </a>
@@ -343,7 +344,7 @@
                             time: 2000
                         }, function(){
                             // 操作成功后的操作
-                            window.location.href = "/login.html";
+                            window.location.href = "{:url('admin/login/index')}";
                         });
                     }
                 },"json");

@@ -18,17 +18,19 @@ return [
         ':name' => ['index/hello', ['method' => 'post']],
     ],
     // 注册登录路由
-    'login'       => [
+    'login/'       => [
         // 目标地址
         'admin/login/index',
         // 路由参数
         [
+            // 请求方式
             'method'    =>   'get',
+            // 请求后缀
             'ext'       =>   'html',
         ],
     ],
-    // 注册登录路由
-    'adminIndex'       => [
+    // 注册后台首页路由
+    'adminIndex/'       => [
         // 目标地址
         'admin/index/index',
         // 路由参数
@@ -37,5 +39,4 @@ return [
             'ext'       =>   'html',
         ],
     ],
-    // 'blog/:id'   => ['Blog/update',['method' => 'post|put'], ['id' => '\d+']],
 ];
