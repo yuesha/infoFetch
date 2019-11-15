@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="utf-8"/>
+        <title>密码管理-信息抓取系统</title>
+        <meta content="webkit" name="renderer"/>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
+        <!-- viewport 属性在 Chrome 不支持 target-densitydpi=low-dpi  -->
+        <meta content="no-siteapp" http-equiv="Cache-Control"/>
+        <link href="__XADMIN__/css/font.css" rel="stylesheet"/>
+        <link href="__XADMIN__/css/xadmin.css" rel="stylesheet"/>
+        <script charset="utf-8" src="__XADMIN__/lib/layui/layui.js">
+        </script>
+        <script src="__XADMIN__/js/xadmin.js" type="text/javascript">
+        </script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+            <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </link>
+</link>
+</head>
+<body>
+<div class="x-nav">
+    <span class="layui-breadcrumb" style="visibility: visible;">
+        <a href="">首页</a>
+        <span lay-separator="">/</span>
+        <a href="">个人管理</a>
+        <span lay-separator="">/</span>
+        <a>
+            <cite>密码管理</cite>
+        </a>
+    </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+    </a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body ">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="oldPass">
+                                <span class="x-red">*</span>
+                                原密码
+                            </label>
+                            <div class="layui-input-inline">
+                                <input autocomplete="off" class="layui-input" id="oldPass" lay-verify="oldPw" name="oldPw" required="" type="password"/>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="L_pass">
+                                <span class="x-red">*</span>
+                                新密码
+                            </label>
+                            <div class="layui-input-inline">
+                                <input autocomplete="off" class="layui-input" id="L_pass" lay-verify="pw" name="pw" required="" type="password"/>
+                            </div>
+                            <div class="layui-form-mid x-red">6到16个字符</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="L_repass">
+                                <span class="x-red">*</span>
+                                确认密码
+                            </label>
+                            <div class="layui-input-inline">
+                                <input autocomplete="off" class="layui-input" id="L_repass" lay-verify="repw" name="repass" required="" type="password"/>
+                            </div>
+                            <div class="layui-form-mid x-red">两次密码必须相同</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="L_repass"></label>
+                            <button class="layui-btn" lay-filter="save" lay-submit="">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layer','jquery'], function() {
+        $ = layui.jquery;
+        var form = layui.form,
+        layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            pw: [/(.+){6,12}$/, '新密码必须6到12位'],
+            repw: function(value) {
+                if ($('#L_pass').val() != $('#L_repass').val()) {
+                    return '两次密码不一致';
+                }
+            }
+        });
+
+        //监听提交
+        form.on('submit(save)', function(data) {
+            console.log(data);
+            //发异步，把数据提交给php
+            $.post("{:url('save')}",data,function(res){
+                if(res.code > 0){
+                    // 操作失败
+                    layer.msg(res.msg,{icon: 2});
+                }else{
+                    layer.msg(res.msg, {
+                        icon: 1,
+                        time: 2000
+                    }, function(){
+                        // 操作成功后的操作
+                        window.location.reload();
+                    });
+                }
+            },"json");
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

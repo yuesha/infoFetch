@@ -8,6 +8,6 @@ class PwManageController extends \app\comm\baseClass\BaseController
 {
     public function index()
     {
-        echo url();
+        return view();
     }
 }
