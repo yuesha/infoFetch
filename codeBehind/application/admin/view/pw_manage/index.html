@@ -102,7 +102,7 @@
         form.on('submit(save)', function(data) {
             console.log(data);
             //发异步，把数据提交给php
-            $.post("{:url('save')}",data,function(res){
+            $.post("{:url('save')}",data.field,function(res){
                 if(res.code > 0){
                     // 操作失败
                     layer.msg(res.msg,{icon: 2});
