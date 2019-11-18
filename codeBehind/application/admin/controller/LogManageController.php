@@ -9,12 +9,9 @@ class LogManageController extends \app\comm\baseClass\BaseController
     public function index()
     {
         return view();
-        
+
     }
     public function getlist()
     {
-
-
-
     }
 }
