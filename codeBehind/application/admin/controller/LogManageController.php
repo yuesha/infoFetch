@@ -17,7 +17,7 @@ class LogManageController extends \app\comm\baseClass\BaseController
         //请求数据库
         $loglist=DB::table('manage_log')->Order("id desc")->select();
         dump($loglist);
-        //如果接收到值
+        //模板赋值
         $this->assign("",$loglist);
    
     }
