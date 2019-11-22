@@ -17,13 +17,13 @@
           <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
           <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-         <script type="text/javascript">
+          <script type="text/javascript">
             var attime;
             function clock(){
                 var i =setInterval(function(){
                     var time = new Date();
-                    attime =time.getFullYear() +  "年" + (time.getMonth()+1) + "月" + time.getDate() + "日"+time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-                    document.getElementById("clock").value = "当前时间为：" + attime;
+                    attime =time.getFullYear() +  "年" + (time.getMonth()+1) + "月" + time.getDate() + "日&nbsp;"+time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+                    document.getElementById("clock").innerHTML = "当前时间为：" + attime;
                 },1000); 
                 //return i;
             }
@@ -39,7 +39,7 @@
                         <div class="layui-card-body ">
                             <blockquote class="layui-elem-quote">欢迎管理员：
                                 <span class="x-red">{$manage.name}</span>！
-                                <input type="text" id="clock" size="60"/>
+                                 <span id="clock"></span>
                             </blockquote>
                         </div>
                     </div>
