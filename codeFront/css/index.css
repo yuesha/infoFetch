@@ -1,0 +1,11 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.nav .type{
+	margin-right: 52px;
+	font-size: 16px;
+}
+.type a:hover{
+	background: #007CB7;
+}
