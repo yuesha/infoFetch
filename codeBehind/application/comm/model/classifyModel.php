@@ -19,14 +19,10 @@ class classifyModel extends Model
         $list = self::all(function ($query) use ($page, $limit) {
             $query->limit(($page - 1) * $limit, $limit)->order('id', 'asc');
         }, '', true);
+        // 将返回的 list 对象转换为数组
         $list = collection($list)->toArray();
 
-        $data['code'] = 0;
-        $data['msg'] = '正常回调';
-        $data['count'] = count($allList);
-        $data['data'] = $list;
-        // halt($data);
-        $dataJson = json($data);
-        return $dataJson;
+        // 返回数据
+        return return_table($list,$allList);
     }
 }

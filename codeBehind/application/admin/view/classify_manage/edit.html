@@ -2,7 +2,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8"/>
-        <title>分类添加-信息抓取系统</title>
+        <title>分类修改-信息抓取系统</title>
         <meta name="renderer" content="webkit"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -20,13 +20,14 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form">
+                    <input type="hidden" name="id" value="{$classify.id}">
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>
                             分类名称
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="name" required="" lay-verify="" autocomplete="off" class="layui-input"/>
+                            <input type="text" id="name" name="name" required="" lay-verify="" autocomplete="off" class="layui-input" value="{$classify.name}" />
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red">*</span>
@@ -38,7 +39,7 @@
                             添&nbsp;&nbsp;加&nbsp;&nbsp;人
                         </label>
                         <div class="layui-input-inline">
-                            <span class="layui-form-mid layui-word-aux">{$session.name}</span>
+                            <span class="layui-form-mid layui-word-aux">{$classify.add_user}</span>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
@@ -47,10 +48,10 @@
                     <div class="layui-form-item">
                         <label for="created_at" class="layui-form-label">
                             <span class="x-red"></span>
-                            添加时间
+                            修改时间
                         </label>
                         <div class="layui-input-inline">
-                            <span class="layui-form-mid layui-word-aux">{:date("Y-m-d H:i:s")}</span>
+                            <span class="layui-form-mid layui-word-aux">{:date("Y-m-d H:i:s",$classify['created_at'])}</span>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
@@ -59,7 +60,7 @@
 
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
+                        <button class="layui-btn" lay-filter="add" lay-submit="">修改</button>
                     </div>
                 </form>
             </div>

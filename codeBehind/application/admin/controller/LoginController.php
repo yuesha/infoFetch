@@ -63,8 +63,11 @@ class LoginController extends \think\Controller
     // 登出操作
     public function loginout()
     {
+        if (session("?manage")) {
+            exit_msg("登出成功",0);
+        }
         ManageLog::log("登出成功");
-        session(null);
+        session("manage",null);
         exit_msg("登出成功",0);
     }
 }
