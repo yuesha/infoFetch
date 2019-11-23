@@ -36,10 +36,10 @@
                     <div class="layui-form-item">
                         <label for="add_user" class="layui-form-label">
                             <span class="x-red"></span>
-                            添&nbsp;&nbsp;加&nbsp;&nbsp;人
+                            修&nbsp;&nbsp;改&nbsp;&nbsp;人
                         </label>
                         <div class="layui-input-inline">
-                            <span class="layui-form-mid layui-word-aux">{$classify.add_user}</span>
+                            <span class="layui-form-mid layui-word-aux">{$session.name}</span>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
@@ -51,7 +51,7 @@
                             修改时间
                         </label>
                         <div class="layui-input-inline">
-                            <span class="layui-form-mid layui-word-aux">{:date("Y-m-d H:i:s",$classify['created_at'])}</span>
+                            <span class="layui-form-mid layui-word-aux">{:date("Y-m-d H:i:s")}</span>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
