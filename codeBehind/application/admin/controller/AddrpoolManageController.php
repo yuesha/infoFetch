@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-use app\comm\model\classifyModel as Classify;
+use app\comm\model\fetchPoolModel as fetchPool;
 use app\comm\model\manageLogModel as ManageLog;
 
 /**
@@ -23,11 +23,11 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
     // 地址池修改渲染
     public function edit($id)
     {
-        $classify = Classify::get($id);
-        if (!$classify) {
+        $fetchPool = fetchPool::get($id);
+        if (!$fetchPool) {
             exit_msg("未知错误");
         }
-        $data['classify']  = $classify -> toArray();
+        $data['fetchPool']  = $fetchPool -> toArray();
         $data['session']  = session('manage') -> toArray();
         return view('',$data);
     }
@@ -35,7 +35,7 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
     public function getList($page = 1, $limit = 10)
     {
         // 使用模型里的方法去获取数据
-        return Classify::getList($page, $limit);
+        return fetchPool::getList($page, $limit);
     }
     // 保存地址池信息
     public function save()
@@ -45,7 +45,7 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
         $id = (int)input('post.id');
         if ($id === 0) {
             // 添加时判断地址池是否存在
-            $isset = Classify::getByName($name);
+            $isset = fetchPool::getByName($name);
             if ($isset) {
                 exit_msg("此地址池已存在，请勿重复添加");
             }
@@ -53,8 +53,8 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
             $data['name'] = $name;
             $data['add_user'] = session("manage") -> name;
             $data['created_at'] = time();
-            Classify::create($data);
-            $sql = Classify::getLastsql();
+            fetchPool::create($data);
+            $sql = fetchPool::getLastsql();
             // 记录添加地址池日志
             ManageLog::log($name." 地址池添加成功",$sql);
             // 清除缓存
@@ -62,14 +62,14 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
             exit_msg($name." 地址池添加成功！",0);
         }else{
             // 修改时确定此地址池存在
-            $classify = Classify::get($id);
-            if (!$classify) {
+            $fetchPool = fetchPool::get($id);
+            if (!$fetchPool) {
                 exit_msg("此地址池不存在");
             }
-            $old_name = $classify -> name;
-            $classify -> name = $name;
-            $classify -> save();
-            $sql = $classify::getLastsql();
+            $old_name = $fetchPool -> name;
+            $fetchPool -> name = $name;
+            $fetchPool -> save();
+            $sql = $fetchPool::getLastsql();
             ManageLog::log("修改 ".$old_name." 地址池名称为： ".$name,$sql);
             // 清除缓存
             \think\Cache::clear();
@@ -83,14 +83,14 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
         if ($id === 0) {
             exit_msg("未知错误");
         }
-        $classify = Classify::get($id);
-        if ($classify) {
-            $classify_name = $classify -> name;
-            $classify -> delete();
+        $fetchPool = fetchPool::get($id);
+        if ($fetchPool) {
+            $fetchPool_name = $fetchPool -> name;
+            $fetchPool -> delete();
             // 清除缓存
             \think\Cache::clear();
-            $sql = $classify::getLastsql();
-            ManageLog::log("删除地址池 ".$classify_name." 成功",$sql);
+            $sql = $fetchPool::getLastsql();
+            ManageLog::log("删除地址池 ".$fetchPool_name." 成功",$sql);
             exit_msg("删除成功",0);
         }else{
             exit_msg("此地址池不存在");
