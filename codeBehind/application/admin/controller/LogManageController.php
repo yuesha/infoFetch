@@ -1,6 +1,6 @@
 <?php
 namespace app\admin\controller;
-use think\Db;
+use app\comm\model\manageLogModel as manageLog;
 /**
  * 日志管理控制器
  */
@@ -11,14 +11,8 @@ class LogManageController extends \app\comm\baseClass\BaseController
         return view();
 
     }
-    public function getlist()
+    public function getlist($page = 1,$limit = 10)
     {
-        $manage = session("manage");
-        //请求数据库
-        $loglist=DB::table('manage_log')->Order("id desc")->select();
-        dump($loglist);
-        //模板赋值
-        $this->assign("",$loglist);
-   
+        return manageLog::getList($page,$limit);
     }
 }

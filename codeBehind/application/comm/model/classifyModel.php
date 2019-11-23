@@ -8,6 +8,7 @@ use think\Model;
  */
 class classifyModel extends Model
 {
+    // 获取分类列表
     public static function getList($page = 1, $limit = 10)
     {
         // 获取所有数据
