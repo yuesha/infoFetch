@@ -85,9 +85,12 @@ class ClassifyManageController extends \app\comm\baseClass\BaseController
         }
         $classify = Classify::get($id);
         if ($classify) {
+            $classify_name = $classify -> name;
             $classify -> delete();
             // 清除缓存
             \think\Cache::clear();
+            $sql = $classify::getLastsql();
+            ManageLog::log("删除分类 ".$classify_name." 成功",$sql);
             exit_msg("删除成功",0);
         }else{
             exit_msg("此分类不存在");
