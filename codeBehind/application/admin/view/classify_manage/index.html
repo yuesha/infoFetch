@@ -27,10 +27,10 @@
     <span class="layui-breadcrumb" style="visibility: visible;">
         <a href="">首页</a>
         <span lay-separator="">/</span>
-        <a href="">个人管理</a>
+        <a href="">分类管理</a>
         <span lay-separator="">/</span>
         <a>
-            <cite>分类管理</cite>
+            <cite>分类列表</cite>
         </a>
     </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
@@ -92,19 +92,24 @@
                 if(layEvent === 'edit'){
                     xadmin.open("分类信息修改",'{:url("edit")}?id=' + data.id,600,400);
                 }else if (layEvent === 'del') {
-                    $.post("{:url('del')}",data.field,function(res){
-                        if(res.code > 0){
-                            // 操作失败
-                            layer.msg(res.msg,{icon: 2});
-                        }else{
-                            layer.msg(res.msg, {
-                                icon: 1,
-                                time: 2000
-                            }, function(){
-                                obj.del();
-                            });
-                        }
-                    },"json");
+                    layer.confirm("确定删除 " + data.name + " 分类吗？",{
+                        title: '删除分类确认框',
+                        btn: ['狠心删除','我再想想']
+                    },function(){
+                        $.post("{:url('del')}",{id: data.id},function(res){
+                            if(res.code > 0){
+                                // 操作失败
+                                layer.msg(res.msg,{icon: 2});
+                            }else{
+                                layer.msg(res.msg, {
+                                    icon: 1,
+                                    time: 2000
+                                }, function(){
+                                    obj.del();
+                                });
+                            }
+                        },"json");
+                    });
                 }
             });
         });

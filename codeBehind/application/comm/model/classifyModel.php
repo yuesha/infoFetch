@@ -26,4 +26,9 @@ class classifyModel extends Model
         // 返回数据
         return return_table($list,$allList);
     }
+    // 转换时间戳
+    public function getCreatedAtAttr($created_at)
+    {
+        return date("Y-m-d H:i:s",$created_at);
+    }
 }
