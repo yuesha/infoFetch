@@ -146,7 +146,7 @@
             </div>
             <div class="layui-input-inline">
                 <select name="addrpool" lay-verify="" lay-search lay-event="addrpool">
-                    <option selected value="0">默认展示所有地址池</option>
+                    <option selected value="">默认展示所有地址池</option>
                     {volist name="addrpool" id="item"}
                     <option value="{$item.id}">{$item.name} 地址池</option>
                     {/volist}

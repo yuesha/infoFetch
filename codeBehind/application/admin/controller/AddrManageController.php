@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 
+use app\comm\model\fetchPoolModel as fetchPool;
 use app\comm\model\fetchUrlModel as fetchUrl;
 use app\comm\model\manageLogModel as ManageLog;
 
@@ -12,7 +13,7 @@ class AddrManageController extends \app\comm\baseClass\BaseController
     // 地址列表首页渲染
     public function index()
     {
-        $data['addrpool'] = [];
+        $data['addrpool'] = fetchPool::all(null,'',true);
         return view('',$data);
     }
     // 地址添加渲染
@@ -34,10 +35,10 @@ class AddrManageController extends \app\comm\baseClass\BaseController
         return view('',$data);
     }
     // 获取地址列表数据
-    public function getList($page = 1, $limit = 10)
+    public function getList($page = 1, $limit = 10,$addrpool_id = 0)
     {
         // 使用模型里的方法去获取数据
-        return fetchUrl::getList($page, $limit);
+        return fetchUrl::getList($page, $limit, $addrpool_id);
     }
     // 保存地址信息
     public function save()
