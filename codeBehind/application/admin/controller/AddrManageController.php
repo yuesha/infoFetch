@@ -12,12 +12,14 @@ class AddrManageController extends \app\comm\baseClass\BaseController
     // 地址列表首页渲染
     public function index()
     {
-        return view();
+        $data['addrpool'] = [];
+        return view('',$data);
     }
     // 地址添加渲染
     public function add()
     {
         $data['session'] = session('manage') -> toArray();
+        $data['addrpool'] = [];
         return view('',$data);
     }
     // 地址修改渲染
