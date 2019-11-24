@@ -2,7 +2,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8"/>
-        <title>分类添加-信息抓取系统</title>
+        <title>地址池添加-信息抓取系统</title>
         <meta name="renderer" content="webkit"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -23,13 +23,74 @@
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>
-                            分类名称
+                            地址池名称
                         </label>
                         <div class="layui-input-inline">
                             <input type="text" id="name" name="name" required="" lay-verify="" autocomplete="off" class="layui-input"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red">*</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="auto_url" class="layui-form-label">
+                            <span class="x-red"></span>
+                            抓取目录地址
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="auto_url" name="auto_url" lay-verify="" autocomplete="off" class="layui-input"/>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="auto_rule" class="layui-form-label">
+                            <span class="x-red">*</span>
+                            目录抓取规则
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="auto_rule" name="auto_rule" lay-verify="" autocomplete="off" class="layui-input"/>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*</span>
+                            以英文状态下的"|"分隔抓取规则
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="default_rule" class="layui-form-label">
+                            <span class="x-red"></span>
+                            默认抓取规则
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input"/>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="default_rule" class="layui-form-label">
+                            <span class="x-red"></span>
+
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input"/>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">X</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="default_rule" class="layui-form-label">
+                            <span class="x-red"></span>
+                            是否自动抓取
+                        </label>
+                        <div class="layui-input-inline">
+                          <input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
                         </div>
                     </div>
                     <div class="layui-form-item">
