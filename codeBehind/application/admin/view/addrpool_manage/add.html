@@ -10,6 +10,7 @@
         <meta content="no-siteapp" http-equiv="Cache-Control"/>
         <link href="__XADMIN__/css/font.css" rel="stylesheet"/>
         <link href="__XADMIN__/css/xadmin.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="__BEHIND__/addrpool_manage_add.css">
         <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
         <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -50,11 +51,12 @@
                             目录抓取规则
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="auto_rule" name="auto_rule" lay-verify="" autocomplete="off" class="layui-input"/>
+                            <input type="text" id="auto_rule" name="auto_rule" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
-                            <span class="x-red">*</span>
-                            以英文状态下的"|"分隔抓取规则
+                            <span class="x-red"></span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge add-span">+</span>
+                            <!-- 以英文状态下的"|"分隔抓取规则 -->
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -63,22 +65,11 @@
                             默认抓取规则
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input"/>
+                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label for="default_rule" class="layui-form-label">
-                            <span class="x-red"></span>
-
-                        </label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input"/>
-                        </div>
-                        <div class="layui-form-mid layui-word-aux">
-                            <span class="x-red">X</span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge add-span">+</span>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -128,6 +119,7 @@
         <script type="text/javascript" src="__STATIC__/cdn/jquery.min.js"></script>
         <script charset="utf-8" src="__XADMIN__/lib/layui/layui.js"></script>
         <script src="__XADMIN__/js/xadmin.js" type="text/javascript"></script>
+        <script type="text/javascript" src="__BEHIND__/addrpool_manage_add.js"></script>
         <script>
             $(function  () {
                 layui.use('form', function(){
