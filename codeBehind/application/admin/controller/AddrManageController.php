@@ -20,7 +20,7 @@ class AddrManageController extends \app\comm\baseClass\BaseController
     public function add()
     {
         $data['session'] = session('manage') -> toArray();
-        $data['addrpool'] = [];
+        $data['addrpool'] = fetchPool::all(null,'',true);
         return view('',$data);
     }
     // 地址修改渲染
