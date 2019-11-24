@@ -12,3 +12,6 @@ runtime
 
 # 忽略 Nginx 的伪静态配置文件
 nginx.htaccess
+
+# 忽略 ThinkPHP 的数据库配置文件
+database.php
