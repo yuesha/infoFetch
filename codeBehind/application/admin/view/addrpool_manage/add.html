@@ -24,13 +24,30 @@
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>
-                            地址池名称
+                            地址池的名称
                         </label>
                         <div class="layui-input-inline">
                             <input type="text" id="name" name="name" required="" lay-verify="" autocomplete="off" class="layui-input"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*必填</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>
+                            地址所属分类
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="classify_id" lay-verify="" lay-search>
+                                <option selected value="0">暂不设置分类</option>
+                                {volist name="classify" id="item"}
+                                <option value="{$item.id}">{$item.name} 分类</option>
+                                {/volist}
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*必选</span>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -47,15 +64,15 @@
                     </div>
                     <div class="layui-form-item">
                         <label for="auto_rule" class="layui-form-label">
-                            <span class="x-red">*</span>
+                            <span class="x-red"></span>
                             目录抓取规则
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="auto_rule" name="auto_rule" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
+                            <input type="text" id="auto_rule" name="auto_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
-                            <span class="layui-badge layui-bg-green layuiadmin-badge add-span">+</span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge" onclick="add_span('auto_rule',this)">+</span>
                             <!-- 以英文状态下的"|"分隔抓取规则 -->
                         </div>
                     </div>
@@ -65,11 +82,11 @@
                             默认抓取规则
                         </label>
                         <div class="layui-input-inline">
-                            <input type="text" id="default_rule" name="default_rule" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
+                            <input type="text" id="default_rule" name="default_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
-                            <span class="layui-badge layui-bg-green layuiadmin-badge add-span">+</span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge" onclick="add_span('default_rule',this)">+</span>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -78,7 +95,7 @@
                             是否自动抓取
                         </label>
                         <div class="layui-input-inline">
-                          <input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭">
+                          <input type="checkbox" name="is_auto" lay-skin="switch" lay-text="开启|关闭" value="1">
                         </div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red"></span>
@@ -127,6 +144,7 @@
                     //监听提交
                     form.on('submit(add)', function(data){
                         // 向后端接口发送数据
+                        // console.log(data.field);return false;
                         $.post("{:url('save')}",data.field,function(res){
                             if(res.code > 0){
                                 // 操作失败
