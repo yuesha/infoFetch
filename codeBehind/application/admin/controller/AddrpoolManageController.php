@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 
 use app\comm\model\fetchPoolModel as fetchPool;
+use app\comm\model\classifyModel as Classify;
 use app\comm\model\manageLogModel as ManageLog;
 
 /**
@@ -12,7 +13,9 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
     // 地址池列表首页渲染
     public function index()
     {
-        return view();
+        $classify = Classify::all(null, '', true);
+        $data['classify'] = collection($classify)->toArray();
+        return view('',$data);
     }
     // 地址池添加渲染
     public function add()
@@ -32,10 +35,11 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
         return view('',$data);
     }
     // 获取地址池列表数据
-    public function getList($page = 1, $limit = 10)
+    public function getList($page = 1, $limit = 10, $classify_id = 0)
     {
+        $classify_id = (int)$classify_id;
         // 使用模型里的方法去获取数据
-        return fetchPool::getList($page, $limit);
+        return fetchPool::getList($page, $limit, $classify_id);
     }
     // 保存地址池信息
     public function save()
