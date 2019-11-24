@@ -37,4 +37,16 @@ class fetchPoolModel extends Model
     {
         return $is_auto == 0?'否':'是';
     }
+    // 转换抓取目录规则
+    public function getAutoRuleAttr($auto_rule)
+    {
+        $auto_rule = json_decode($auto_rule);
+        return $auto_rule;
+    }
+    // 转换默认抓取规则
+    public function getDefaultRuleAttr($default_rule)
+    {
+        $default_rule = json_decode($default_rule);
+        return $default_rule;
+    }
 }
