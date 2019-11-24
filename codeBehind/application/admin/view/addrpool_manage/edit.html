@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>地址池修改-信息抓取系统</title>
+        <meta name="renderer" content="webkit"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
+        <!-- viewport 属性在 Chrome 不支持 target-densitydpi=low-dpi  -->
+        <meta content="no-siteapp" http-equiv="Cache-Control"/>
+        <link href="__XADMIN__/css/font.css" rel="stylesheet"/>
+        <link href="__XADMIN__/css/xadmin.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="__BEHIND__/addrpool_manage_add.css">
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+            <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row">
+                <form class="layui-form">
+                    <input type="hidden" name="id" value="{$fetchPool.id}">
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
+                            <span class="x-red">*</span>
+                            地址池的名称
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="name" name="name" required="" lay-verify="" autocomplete="off" class="layui-input" value="{$fetchPool.name}" />
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*必填</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
+                            <span class="x-red">*</span>
+                            地址所属分类
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="classify_id" lay-verify="" lay-search>
+                                <option selected value="0">暂不设置分类</option>
+                                {volist name="classify" id="item"}
+                                <option value="{$item.id}" {$fetchPool.classify_id == $item.id?'selected':''}>{$item.name} 分类</option>
+                                {/volist}
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*必选</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="auto_url" class="layui-form-label">
+                            <span class="x-red"></span>
+                            抓取目录地址
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="auto_url" name="auto_url" lay-verify="" autocomplete="off" class="layui-input" value="{$fetchPool.auto_url}" />
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">
+                            <span class="x-red"></span>
+                            目录抓取规则
+                        </label>
+                        <div class="layui-input-inline">
+                            {if ($fetchPool.auto_rule)}
+                            <input type="text" name="auto_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text" value="" style="display: inline;width: 85%;" />
+                            {volist name="fetchPool.auto_rule" id="item"}
+                            <div class="demo">
+                                <input type="text" name="auto_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text" value="{$item}" style="display: inline;width: 85%;" readonly="readonly" />
+                                <span class="layui-badge layui-bg-red layuiadmin-badge del-span" onclick="delThis(this)">x</span>
+                            </div>
+                            {/volist}
+                            {else}
+                            <input type="text" name="auto_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
+                            {/if}
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge" onclick="add_span('auto_rule',this)">+</span>
+                            <!-- 以英文状态下的"|"分隔抓取规则 -->
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">
+                            <span class="x-red"></span>
+                            默认抓取规则
+                        </label>
+                        <div class="layui-input-inline">
+                            {if ($fetchPool.default_rule)}
+                            <input type="text" name="default_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text" value="" style="display: inline;width: 85%;" />
+                            {volist name="fetchPool.default_rule" id="item"}
+                            <div class="demo">
+                                <input type="text" name="default_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text" value="{$item}" style="display: inline;width: 85%;" readonly="readonly" />
+                                <span class="layui-badge layui-bg-red layuiadmin-badge del-span" onclick="delThis(this)">x</span>
+                            </div>
+                            {/volist}
+                            {else}
+                            <input type="text" name="default_rule[]" lay-verify="" autocomplete="off" class="layui-input edit-text"/>
+                            {/if}
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                            <span class="layui-badge layui-bg-green layuiadmin-badge" onclick="add_span('default_rule',this)">+</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="default_rule" class="layui-form-label">
+                            <span class="x-red"></span>
+                            是否自动抓取
+                        </label>
+                        <div class="layui-input-inline">
+                          <input type="checkbox" name="is_auto" lay-skin="switch" lay-text="开启|关闭" value="1" {$fetchPool.is_auto=='是'?'checked':''}>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="add_user" class="layui-form-label">
+                            <span class="x-red"></span>
+                            添&nbsp;&nbsp;加&nbsp;&nbsp;人
+                        </label>
+                        <div class="layui-input-inline">
+                            <span class="layui-form-mid layui-word-aux">{$session.name}</span>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="created_at" class="layui-form-label">
+                            <span class="x-red"></span>
+                            修改时间
+                        </label>
+                        <div class="layui-input-inline">
+                            <span class="layui-form-mid layui-word-aux">{:date("Y-m-d H:i:s")}</span>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red"></span>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="name" class="layui-form-label"></label>
+                        <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="__STATIC__/cdn/jquery.min.js"></script>
+        <script charset="utf-8" src="__XADMIN__/lib/layui/layui.js"></script>
+        <script src="__XADMIN__/js/xadmin.js" type="text/javascript"></script>
+        <script type="text/javascript" src="__BEHIND__/addrpool_manage_add.js"></script>
+        <script>
+            $(function  () {
+                layui.use('form', function(){
+                    var form = layui.form;
+                    //监听提交
+                    form.on('submit(add)', function(data){
+                        // 向后端接口发送数据
+                        // console.log(data.field);return false;
+                        $.post("{:url('save')}",data.field,function(res){
+                            if(res.code > 0){
+                                // 操作失败
+                                layer.msg(res.msg,{icon: 2});
+                            }else{
+                                layer.msg(res.msg, {
+                                    icon: 1,
+                                    time: 2000
+                                }, function(){
+                                    // 保存成功后刷新父页面
+                                    xadmin.father_reload();
+                                });
+                            }
+                        },"json");
+                        return false;
+                    });
+                });
+            })
+        </script>
+    </body>
+</html>
