@@ -24,12 +24,12 @@
                     var time = new Date();
                     attime =time.getFullYear() +  "年" + (time.getMonth()+1) + "月" + time.getDate() + "日&nbsp;"+time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
                     document.getElementById("clock").innerHTML = "当前时间为：" + attime;
-                },1000); 
+                },1000);
                 //return i;
             }
             clock();
             //console.log(i);
-          </script> 
+          </script>
     </head>
     <body>
         <div class="layui-fluid">
@@ -53,7 +53,7 @@
                                     <a href="javascript:;" class="x-admin-backlog-body">
                                         <h3>访问次数</h3>
                                         <p>
-                                            <cite>66</cite></p>
+                                            <cite>{$visitTimes}</cite></p>
                                     </a>
                                 </li>
                                 <li class="layui-col-md2 layui-col-xs6">
@@ -67,7 +67,7 @@
                                     <a href="javascript:;" class="x-admin-backlog-body">
                                         <h3>分类数量</h3>
                                         <p>
-                                            <cite>66</cite></p>
+                                            <cite>{$classifyTimes}</cite></p>
                                     </a>
                                  </li>
                                 <li class="layui-col-md2 layui-col-xs6">
