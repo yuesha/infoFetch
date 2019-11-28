@@ -8,6 +8,7 @@ sftp-config.json
 composer.lock
 *.log
 runtime
+thinkphp
 
 # 忽略 Nginx 的伪静态配置文件
 nginx.htaccess
