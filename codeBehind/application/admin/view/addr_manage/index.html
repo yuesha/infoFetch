@@ -77,10 +77,10 @@
                 ,cols: [[
                 {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
                 ,{field: 'title', title: '地址名称', sort: true}
-                ,{field: 'url', title: '抓取地址', sort: true, templet: function(d){
+                ,{field: 'url', title: '抓取地址', sort: true,hide: true, templet: function(d){
                     return '<a href="' + d.url + '" target="blank">' + d.url + '</a>';
                 }}
-                ,{field: 'rule', title: '抓取规则', width:130, sort: true}
+                ,{field: 'rule', title: '抓取规则', width:130, sort: true, hide: true}
                 ,{field: 'is_fetch', title: '是否已抓取', width:130, sort: true}
                 ,{field: 'created_at', title: '操作时间', width: 150}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#bar'}

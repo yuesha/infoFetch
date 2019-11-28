@@ -32,4 +32,15 @@ class fetchUrlModel extends Model
     {
         return date("Y-m-d H:i:s", $created_at);
     }
+    // 转换是否抓取标识位
+    public function getIsFetchAttr($is_fetch)
+    {
+        return $is_fetch == 0?'否':'是';
+    }
+    // 转换抓取规则
+    public function getRuleAttr($rule)
+    {
+        $rule = json_decode($rule,true);
+        return $rule;
+    }
 }
