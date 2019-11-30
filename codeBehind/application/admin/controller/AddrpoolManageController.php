@@ -60,6 +60,7 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
                 exit_msg("此地址池已存在，请勿重复添加");
             }
             // 添加地址池信息
+            $data['add_user'] = session('manage') -> name;
             $data['created_at'] = time();
             fetchPool::create($data);
             $sql = fetchPool::getLastsql();
