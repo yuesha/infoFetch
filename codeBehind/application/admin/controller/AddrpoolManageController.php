@@ -14,7 +14,12 @@ class AddrpoolManageController extends \app\comm\baseClass\BaseController
     public function index()
     {
         // 获取所有分类信息
-        $data['classify'] = Classify::all(null, '', true);
+        $classify_rows = cache("Classify_allList");
+        if (!$classify_rows) {
+            $classify_rows = Classify::all();
+            cache("Classify_allList",$classify_rows,60*60*24);
+        }
+        $data['classify'] = $classify_rows;
         return view('',$data);
     }
     // 地址池添加渲染
