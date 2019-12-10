@@ -29,7 +29,7 @@ class manageLogModel extends Model
         // 获取符合条件的数据（分页）(含缓存)
         // use 可以将外部变量拷贝进入闭包函数内
         $list = self::all(function ($query) use ($page, $limit) {
-            $query->limit(($page - 1) * $limit, $limit)->order('id', 'asc');
+            $query->limit(($page - 1) * $limit, $limit)->order('id', 'desc');
         }, '', true);
         // 将返回的 list 对象转换为数组
         $list = collection($list)->toArray();
