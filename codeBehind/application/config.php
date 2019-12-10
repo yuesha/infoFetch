@@ -218,6 +218,8 @@ return [
         'var_session_id' => '',
         // SESSION 前缀
         'prefix' => 'infoFetch_',
+        // 选择数据库索引（redis）
+        'select' => 13,
         // 驱动方式 支持redis memcache memcached
         'type' => 'redis',
         // 绑定ip
