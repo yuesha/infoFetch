@@ -217,9 +217,15 @@ return [
         // SESSION_ID的提交变量,解决flash上传跨域
         'var_session_id' => '',
         // SESSION 前缀
-        'prefix' => 'think',
+        'prefix' => 'infoFetch_',
         // 驱动方式 支持redis memcache memcached
-        'type' => '',
+        'type' => 'redis',
+        // 绑定ip
+        'host'   => '127.0.0.1',
+        // 绑定端口
+        'port'   => '6379',
+        // 密码
+        'password' => '121213',
         // 是否自动开启 SESSION
         'auto_start' => true,
         // 过期时间
