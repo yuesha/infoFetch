@@ -200,6 +200,8 @@ return [
         'port'   => '6379',
         // 密码
         'password' => '121213',
+        // 选择数据库索引（redis）
+        'select' => 13,
         // 缓存保存目录
         // 'path' => CACHE_PATH,
         // 缓存前缀

@@ -17,6 +17,7 @@ class DireFetchController extends \app\comm\baseClass\BaseController
         $data = [];
         return view('',$data);
     }
+
     // 获取 符合自动抓取地址条件的 地址池列表数据
     public function getList($page = 1, $limit = 10)
     {
@@ -35,5 +36,11 @@ class DireFetchController extends \app\comm\baseClass\BaseController
 
         // 返回数据
         return return_table($list,$allList);
+    }
+
+    // 从目录抓取地址信息
+    public function catch(int $id)
+    {
+        # code...
     }
 }

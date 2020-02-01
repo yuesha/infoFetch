@@ -111,14 +111,12 @@
                 var data = obj.data; //获得当前行数据
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
-                if(layEvent === 'edit'){
-                    xadmin.open("地址池信息修改",'{:url("edit")}?id=' + data.id,600,400);
-                }else if (layEvent === 'del') {
-                    layer.confirm("确定删除 " + data.name + " 地址池吗？",{
-                        title: '删除地址池确认框',
-                        btn: ['狠心删除','我再想想']
+                if (layEvent === 'fetch') {
+                    layer.confirm("确定抓取 " + data.name + " 地址池吗？",{
+                        title: '抓取地址池确认框',
+                        btn: ['确定抓取','我再想想']
                     },function(){
-                        $.post("{:url('del')}",{id: data.id},function(res){
+                        $.post("{:url('catch')}",{id: data.id},function(res){
                             if(res.code > 0){
                                 // 操作失败
                                 layer.msg(res.msg,{icon: 2});
