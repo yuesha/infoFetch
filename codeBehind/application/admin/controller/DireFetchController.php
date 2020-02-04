@@ -46,36 +46,54 @@ class DireFetchController extends \app\comm\baseClass\BaseController
         $redis = new \redis();
         $redis->connect('127.0.0.1', 6379);
         $redis->auth('121213');
-        // 获取地址池id
+        // 获取地址池信息
         $id = (int)input('post.id');
         $fetchPoolRow = $this -> checkPool($id);
 
-        $url = parse_url($fetchPoolRow -> auto_url);
-        echo $url['host'];exit;
-        $rule = "#list dl dd a";
+        // 获取抓取地址及详细信息
+        $url = $fetchPoolRow -> auto_url;
+        $urlArr = parse_url($url);
+
+        // 获取抓取规则
+        $rule = $fetchPoolRow -> auto_rule;
+        $rule = $rule[0];
+        dump($rule);exit;
+        $rule = json_decode($rule,true);
+        $rule = $rule[0];
         $rules = [
             // 采集章节名称
-            'title' => ['#list dl dd a','text'],
+            'title' => [$rule,'text'],
             // 采集章节地址
-            'href' => ['#list dl dd a','href'],
+            'href' => [$rule,'href'],
         ];
+        dump($rules);exit;
         $data = QueryList::get($url)->rules($rules)->query()->getData();
         $data = $data -> all();
 
         // 清除此地址池当中的所有地址
         fetchUrl::where(['fetch_pool_id' => $id]) -> delete();
+
+        // 计算数据条数
+        $countData = count($data);
+
         $insData['fetch_pool_id'] = $id;
         $insData['is_fetch'] = 1;
         $insData['rule'] = '';
         $insData['add_user'] = session('manage') -> name;
+
+        // 成功条数
+        $i = 0;
         foreach ($data as $urlRow) {
             $insData['title'] = $urlRow['title'];
-            $insData['url'] = $urlRow['href'];
+            $insData['url'] = $urlArr['host'].$urlRow['href'];
             $insData['created_at'] = time();
-            fetchUrl::create($insData);
-            // $redis->lpush("demo1", $insData['title']);
+            $res = fetchUrl::create($insData);
+            $i += $res?1:0;
         }
-        exit_msg("抓取成功",0);
+        // 更新最近一次抓取目录地址时间
+        $fetchPoolRow -> auto_time = time();
+        $fetchPoolRow -> save();
+        exit_msg("抓取成功，总计".$countData."条，成功".$i."条",0);
     }
 
     // 检查地址池信息

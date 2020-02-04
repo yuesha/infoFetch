@@ -80,7 +80,7 @@
                 ,{field: 'auto_url', title: '抓取目录地址', sort: true, templet: function(d){
                     return '<a href="' + d.auto_url + '" target="blank">' + d.auto_url + '</a>';
                 }}
-                ,{field: 'created_at', title: '操作时间', width: 150}
+                ,{field: 'auto_time', title: '最近一次抓取目录时间', width: 150}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#bar'}
                 ]]
             });
@@ -112,7 +112,7 @@
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
                 if (layEvent === 'fetch') {
-                    layer.confirm("确定抓取 " + data.name + " 地址池吗？",{
+                    layer.confirm("确定抓取 " + data.name + " 地址池吗？<br /><span style='color: red;'>此操作会清空之前地址池的地址信息</span>",{
                         title: '抓取地址池确认框',
                         btn: ['确定抓取','我再想想']
                     },function(){
