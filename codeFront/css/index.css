@@ -2,6 +2,14 @@
 	margin: 0;
 	padding: 0;
 }
+.clearfix:after{
+	content: "";
+	height: 0;
+	line-height: 0;
+	display: block;
+	clear: both;
+	visibility: hidden;
+}
 body{
 	background: #E4FBFF;
 }
@@ -15,6 +23,8 @@ body{
 }
 .header .text{
 	float: left;
+	text-decoration: none;
+	color: lightblue;
 }
 .text .text1{
 	font-size: 28px;
@@ -43,7 +53,7 @@ body{
 	display: inline-block;
 	width: 50px;
 	height: 36px;
-	margin-left: -3px;
+	margin-left: -4px;
 	margin-top: -2px;
 	border-radius: 0 5px 5px 0;
 	background: lightblue;
@@ -87,4 +97,129 @@ body{
 	text-decoration: none;
 	font-size: 18px;
 	color: white;
+	border: none;
+}
+
+
+.main{
+	margin-top: 20px;
+	overflow: hidden;
+}
+.main .main_left{
+	border: 2px solid #BAE0EB;
+	float: left;
+	padding: 0 10px;
+}
+.main_left .part{
+	padding-left: 0;
+	padding-right: 0;
+	margin: 10px 0;
+}
+.part a img{
+	display: inline-block;
+	width: 106px;
+	float: left;
+	padding-right: 5px;
+}
+.part .txt1{
+	display: inline-block;
+	width: 158px;
+	height: 142px;
+	overflow: hidden;
+}
+.txt1 .item{
+	overflow: hidden;
+}
+.item a{
+	float: left;
+}
+.item span{
+	float: right;
+}
+.txt1 p{
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.main_right{
+	border: 2px solid #BAE0EB;
+	float: right;
+	height: 338px;
+	padding: 0;
+}
+.main_right .inform{
+	width: 100%;
+	height: 30px;
+	background: #E1ECED;
+	padding: 0;
+}
+.inform p{
+	font-size: 16px;
+	line-height: 30px;
+	margin-left: 15px;
+}
+.inform p a{
+	font-size: 14px;
+	text-decoration: none;
+	margin-left: 5px;
+}
+.inform p span{
+	float: right;
+	margin-right: 10px;
+	font-size: 14px;
+}
+.main_right .recommend{
+	margin-top: 46px;
+}
+
+
+
+
+.main2{
+	margin-top: 30px;
+	width: 70vw;
+	height: 600px;
+}
+.main2 .recently{
+	width: 70%;
+	height: 100%;
+	border: 2px solid #BAE0EB;
+	float: left;
+}
+.update{
+	background: #A6D3E8;
+}
+.update p{
+	font-size: 14px;
+	line-height: 30px;
+	margin-left: 12px;
+}
+.recently .fiction{
+	margin-left: 12px;
+	padding-right: 20px;
+}
+.main2 .new{
+	width: 28%;
+	height: 100%;
+	float: right;
+	border: 2px solid #BAE0EB;
+}
+
+
+
+
+
+
+
+.footer{
+	margin-top: 30px;
+}
+.footer p{
+	font-size: 12px;
+	color: gray;
+	text-align: center;
+}
+.footer a{
+	margin: 0 auto;
+	text-decoration: none;
 }
