@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'infoFetch',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'infoFetch',
     // 密码
-    'password'        => 'root',
+    'password'        => 'infoFetch123',
     // 端口
     'hostport'        => '',
     // 连接dsn
