@@ -1,57 +1,93 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>首页</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/index.css">
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="./plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<title>首页</title>
 </head>
 <body>
-<!-- 页面头部部分 -->
-<div class="header common_width">
-	<div class="text">
-		<p class="text1">信息抓取系统</p>
-		<p class="text2">infoFetch.hw13.cn</p>
-	</div>
-	<!-- 搜索框 -->
-	<input type="search" placeholder="请输入小说名称或作者" class="search">
-	<input type="submit" class="btn" value="搜索">
-	<!-- 登录 -->
-	<div class="reg">
-		<a href="javascript:;">登录</a>
-	</div>
-</div>
-<!-- 页面分类部分 -->
-<div id="app">
-	<div class="container common_width">
-		<div class="navigate">
-			<ul class="nav nav-pills hidden-xs">
-				<li class="type" v-for="item in typeList">
-					<a href="">{{ item  }}</a>
-				</li>
-			</ul>
+	<div id="app">
+		<div class="container">
+			<!-- 顶部导航 -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container">
+					<!-- 移动端顶部导航（未展开） -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">
+							<span>信息抓取系统</span>
+						</a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">点击展开导航栏</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
 
-			<ul class="nav nav-pills nav-stacked visible-xs-* hidden-lg hidden-md hidden-sm">
-				<li class="type" v-for="item in typeList">
-					<a href="">{{ item  }}</a>
-				</li>
-			</ul>
+					<!-- 导航栏菜单 -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#"> 分类1 <span class="sr-only">(current)</span></a></li>
+							<li><a href="#"> 分类2 </a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 大分类 <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#"> 分类3 </a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"> 分类4 </a></li>
+									<li><a href="#"> 分类5 </a></li>
+								</ul>
+							</li>
+						</ul>
+
+					</div><!-- /.navbar-collapse -->
+				</div>
+			</nav>
+			<!-- 电脑端顶部Logo及搜索 -->
+			<!-- <div class="col-md-3 hidden-sm hidden-xs" id="logo">
+				<img src="./unpackage/res/icons/120x120.png">
+				<span>信息抓取系统</span>
+			</div>
+			<div class="col-md-3">
+
+			</div> -->
+
+			<div class="row">
+
+				<!-- 移动端 底部导航 -->
+				<nav class="navbar navbar-default navbar-fixed-bottom hidden-md hidden-lg">
+					<div class="container">
+						<ul class="nav nav-tabs nav-tabs-justified">
+							<div class="row">
+								<div class="col-xs-4 text-center">
+									<li><a href="https://www.baidu.com">百度一下</a></li>
+								</div>
+								<div class="col-xs-4 text-center">
+									<li><a href="#">按钮2</a></li>
+								</div>
+								<div class="col-xs-4 text-center">
+									<li><a href="#">按钮3</a></li>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</nav>
+
+			</div>
 		</div>
 	</div>
-</div>
-<!-- 页面主体部分 -->
-<div class="main">
 
-</div>
-<!-- 页面尾部 -->
-<div class="footer">
-
-</div>
-<script type="text/javascript" src="js/index.js"></script>
+	<script src="./plugins/jquery-2.1.4/jquery.min.js"></script>
+	<script src="./plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="./plugins/vue-2.x/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {},
+			methods: {},
+		});
+	</script>
 </body>
 </html>
