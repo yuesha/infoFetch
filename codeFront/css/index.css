@@ -7,6 +7,3 @@ a{text-decoration: none!important;}
 #logo{margin: 2vh 0;}
 #logo>img,#logo>span{height: 100px;}
 .bg_blue{background-color: lightblue;}
-
-/*底部导航样式*/
-div.text-center>li>a{line-height: 50px;}
